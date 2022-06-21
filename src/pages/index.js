@@ -4,6 +4,7 @@ import {
 	Typography,
 	Paper,
 	Card,
+	CardContent,
 	CardMedia,
 	CardActions,
 	Button,
@@ -14,7 +15,7 @@ import {
 	useTheme,
 } from '@mui/material';
 
-import { LightMode, DarkMode } from '@mui/icons-material';
+import { LightMode, DarkMode, GitHub } from '@mui/icons-material';
 
 import { ColorModeContext } from '../theme';
 
@@ -22,12 +23,21 @@ const projects = [
 	{
 		name: 'Olá Ônibus',
 		description: 'WebApp for bus stops and routes.',
-		image: '/olaOnibus.png',
+		image: '/ola.jpeg',
+		live: 'https://olaonibus.com.br',
 	},
 	{
 		name: 'Portal Home',
 		description: 'Real Estate website with a focus on simplicity.',
 		image: '/portalhome.png',
+		live: 'https://portalhome.com.br',
+	},
+	{
+		name: 'Together-Do',
+		description: 'Collaborate realtime to-do list with chat.',
+		image: '/portalhome.png',
+		live: 'https://together-doo.web.app',
+		source: 'https://github.com/b-bunhak/together-do',
 	},
 ];
 
@@ -41,7 +51,7 @@ const Home = () => {
 			maxWidth="lg"
 			sx={{
 				p: 0,
-				pt: 10,
+				pt: [10, 14, 18, 22],
 				backgroundImage: `url("/code-${
 					theme.palette.mode === 'dark' ? 'dark' : 'light'
 				}.svg")`,
@@ -156,34 +166,45 @@ const Home = () => {
 				<Typography variant="h3" textAlign="center">
 					Projects
 				</Typography>
-				<Box display="flex" flexWrap="wrap">
+				<Box
+					display="flex"
+					flexWrap="wrap"
+					sx={{
+						'& > *': {
+							flex: '1 1 320px',
+						},
+					}}
+				>
 					{projects.map((project) => (
-						<Card sx={{ m: 2 }} elevation={20}>
-							<CardMedia
-								component="img"
-								height="200"
-								image={project.image}
-								alt={project.name}
-							/>
-							<Box px={2} pt={1}>
-								<Typography variant="h4" color="primary">
-									{project.name}
-								</Typography>
+						<Box p={2} display="flex">
+							<Card key={project.name} elevation={20} sx={{ flex: 1 }}>
+								<CardMedia
+									component="img"
+									height="200"
+									image={project.image}
+									alt={project.name}
+								/>
+								<CardContent>
+									<Typography variant="h4" color="primary">
+										{project.name}
+									</Typography>
 
-								<Typography variant="h6">{project.description}</Typography>
+									<Typography variant="h6">{project.description}</Typography>
+								</CardContent>
 
 								<CardActions>
-									<Button
-										variant="outlined"
-										color="primary"
-										sx={{ ml: 'auto' }}
-									>
-										+ Info
+									<Button variant="outlined" color="primary">
+										Live Demo
 									</Button>
+									{project.source && (
+										<Button startIcon={<GitHub />}>Source</Button>
+									)}
 								</CardActions>
-							</Box>
-						</Card>
+							</Card>
+						</Box>
 					))}
+					<div />
+					<div />
 				</Box>
 			</Paper>
 		</Container>
