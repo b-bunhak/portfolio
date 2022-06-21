@@ -9,12 +9,7 @@ export const ColorModeContext = React.createContext({
 
 const baseTheme = {
 	typography: {
-		fontSize: 16,
 		fontFamily: 'Quicksand',
-		fontWeightMedium: 600,
-		fontWeightRegular: 500,
-		fontWeightLight: 400,
-		fontWeightBold: 800,
 		h1: {
 			fontWeight: 700,
 		},
