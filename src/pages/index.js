@@ -1,3 +1,4 @@
+import React from 'react';
 import {
 	Container,
 	Typography,
@@ -10,9 +11,12 @@ import {
 	ToggleButton,
 	ToggleButtonGroup,
 	Tooltip,
+	useTheme,
 } from '@mui/material';
 
 import { LightMode, DarkMode } from '@mui/icons-material';
+
+import { ColorModeContext } from '../theme';
 
 const projects = [
 	{
@@ -28,6 +32,9 @@ const projects = [
 ];
 
 const Home = () => {
+	const theme = useTheme();
+	const colorMode = React.useContext(ColorModeContext);
+
 	return (
 		<Container
 			component="main"
@@ -35,11 +42,15 @@ const Home = () => {
 			sx={{
 				p: 0,
 				pt: 10,
-				backgroundImage: 'url("/code-light.svg")',
+				backgroundImage: `url("/code-${
+					theme.palette.mode === 'dark' ? 'dark' : 'light'
+				}.svg")`,
 				backgroundSize: '100%',
 			}}
 		>
 			<ToggleButtonGroup
+				value={theme.palette.mode}
+				onChange={colorMode.toggleColorMode}
 				color="primary"
 				size="medium"
 				sx={{
@@ -50,10 +61,10 @@ const Home = () => {
 					bgcolor: 'background.default',
 				}}
 			>
-				<ToggleButton value="left" key="left">
+				<ToggleButton value="light">
 					<LightMode />
 				</ToggleButton>
-				<ToggleButton value="right" key="right">
+				<ToggleButton value="dark">
 					<DarkMode />
 				</ToggleButton>
 			</ToggleButtonGroup>
@@ -109,8 +120,20 @@ const Home = () => {
 					{[
 						{ title: 'HTML, CSS and JS', src: '/HtmlCssJs.svg' },
 						{ title: 'ReactJS', src: '/reactjs.svg' },
-						{ title: 'NextJS', src: '/nextjs.svg' },
-						{ title: 'NodeJS', src: '/nodejs.svg' },
+						{
+							title: 'NextJS',
+							src:
+								theme.palette.mode === 'dark'
+									? '/nextjsDark.svg'
+									: '/nextjs.svg',
+						},
+						{
+							title: 'NodeJS',
+							src:
+								theme.palette.mode === 'dark'
+									? '/nodejsDark.svg'
+									: '/nodejs.svg',
+						},
 						{ title: 'Firebase', src: '/firebase.svg' },
 						{ title: 'PostgreSQL', src: '/Postgresql.svg' },
 					].map(({ src, title }) => (

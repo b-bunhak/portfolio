@@ -1,69 +1,33 @@
-import {
-	CssBaseline,
-	ThemeProvider,
-	createTheme,
-	responsiveFontSizes,
-} from '@mui/material';
+import React from 'react';
+import Head from 'next/head';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 
-let theme = responsiveFontSizes(
-	createTheme({
-		palette: {
-			mode: 'light',
-			primary: {
-				//main: '#275dbf',
-				main: '#007FFF',
-			},
-			secondary: {
-				main: '#27a8bf',
-			},
-			info: {
-				main: '#3e27bf',
-			},
-			background: {
-				default: '#fbfbfb',
-			},
-		},
-		typography: {
-			fontSize: 16,
-			fontFamily: 'Quicksand',
-			fontWeightMedium: 600,
-			fontWeightRegular: 500,
-			fontWeightLight: 400,
-			fontWeightBold: 800,
-			h1: {
-				fontWeight: 700,
-			},
-		},
-		shape: {
-			borderRadius: 10,
-		},
-	})
-);
-
-theme = createTheme(theme, {
-	components: {
-		MuiPaper: {
-			variants: [
-				{
-					props: { variant: 'gradient' },
-					style: {
-						background: `linear-gradient(to right bottom, ${theme.palette.primary.main}, ${theme.palette.primary.dark} 120%)`,
-						boxShadow:
-							'0px 20px 25px rgba(0, 0, 0, 0.1), 0px 10px 10px rgba(0, 0, 0, 0.04)',
-					},
-				},
-			],
-		},
-	},
-});
+import { themeLight, themeDark, ColorModeContext } from '../theme';
 
 function MyApp({ Component, pageProps }) {
+	const [mode, setMode] = React.useState('light');
+	const colorMode = React.useMemo(
+		() => ({
+			toggleColorMode: () => {
+				setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+			},
+		}),
+		[]
+	);
+
+	console.log(mode === 'dark' ? themeDark : themeLight);
+
 	return (
 		<>
-			<ThemeProvider theme={theme}>
-				<CssBaseline />
-				<Component {...pageProps} />
-			</ThemeProvider>
+			<Head>
+				<title>Bruno Bunhak - Software Developer</title>
+			</Head>
+			<ColorModeContext.Provider value={colorMode}>
+				<ThemeProvider theme={mode === 'dark' ? themeDark : themeLight}>
+					<CssBaseline />
+					<Component {...pageProps} />
+				</ThemeProvider>
+			</ColorModeContext.Provider>
 		</>
 	);
 }
