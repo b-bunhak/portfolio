@@ -4,6 +4,8 @@ import Link from 'next/link';
 
 import { useRouter } from 'next/router';
 
+import { useTranslations } from 'next-intl';
+
 import { Box, ToggleButton, ToggleButtonGroup, useTheme } from '@mui/material';
 
 import { LightMode, DarkMode } from '@mui/icons-material';
@@ -22,6 +24,8 @@ export default function HeaderToggles() {
 	const theme = useTheme();
 	const colorMode = React.useContext(ColorModeContext);
 
+	const t = useTranslations();
+
 	return (
 		<Box display="flex" p={2}>
 			<ToggleButtonGroup
@@ -30,8 +34,6 @@ export default function HeaderToggles() {
 				size="medium"
 				sx={{
 					mr: 'auto',
-
-					//bgcolor: 'background.default',
 				}}
 			>
 				<ToggleLink value="en-US" href="/" locale="en-US">
@@ -50,13 +52,12 @@ export default function HeaderToggles() {
 				size="medium"
 				sx={{
 					ml: 'auto',
-					//bgcolor: 'background.default',
 				}}
 			>
-				<ToggleButton value="light">
+				<ToggleButton value="light" aria-label={t('lightLabel')}>
 					<LightMode />
 				</ToggleButton>
-				<ToggleButton value="dark">
+				<ToggleButton value="dark" aria-label={t('darkLabel')}>
 					<DarkMode />
 				</ToggleButton>
 			</ToggleButtonGroup>

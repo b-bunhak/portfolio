@@ -1,5 +1,8 @@
 {
 	"index": {
+		"lightLabel": "Modo claro",
+		"darkLabel": "Modo escuro",
+
 		"hello": "Olá!",
 		"im": "Sou",
 		"developer": "Desenvolvedor de Software",

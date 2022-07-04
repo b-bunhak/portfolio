@@ -16,7 +16,7 @@ export default function SocialLinks() {
 				href={`mailto:${links.email}`}
 				rel="noopener noreferrer"
 				startIcon={
-					<IconButton disableRipple component="div" color="inherit">
+					<IconButton disableRipple component="div" color="inherit" role="">
 						<Email />
 					</IconButton>
 				}
@@ -39,6 +39,7 @@ export default function SocialLinks() {
 					href={links.gitHub}
 					target="_blank"
 					rel="noopener noreferrer"
+					aria-label="Github"
 				>
 					<GitHub />
 				</IconButton>
@@ -48,6 +49,7 @@ export default function SocialLinks() {
 					href={links.linkedIn}
 					target="_blank"
 					rel="noopener noreferrer"
+					aria-label="LinkedIn"
 				>
 					<LinkedIn />
 				</IconButton>

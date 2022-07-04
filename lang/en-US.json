@@ -1,5 +1,8 @@
 {
 	"index": {
+		"lightLabel": "Light mode",
+		"darkLabel": "Dark mode",
+
 		"hello": "Hello There!",
 		"im": "I'm",
 		"developer": "Software Developer",
