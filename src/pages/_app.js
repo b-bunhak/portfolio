@@ -1,11 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
 import { NextIntlProvider } from 'next-intl';
-import { CssBaseline, ThemeProvider } from '@mui/material';
+import { CssBaseline, ThemeProvider, useTheme } from '@mui/material';
 
 import { themeLight, themeDark, ColorModeContext } from '../theme';
 
-function MyApp({ Component, pageProps }) {
+export default function App({ Component, pageProps }) {
 	const [mode, setMode] = React.useState('dark');
 	const colorMode = React.useMemo(
 		() => ({
@@ -15,6 +15,20 @@ function MyApp({ Component, pageProps }) {
 		}),
 		[]
 	);
+	return (
+		<NextIntlProvider messages={pageProps.messages}>
+			<ColorModeContext.Provider value={colorMode}>
+				<ThemeProvider theme={mode === 'light' ? themeLight : themeDark}>
+					<CssBaseline />
+					<AppInner Component={Component} pageProps={pageProps} />
+				</ThemeProvider>
+			</ColorModeContext.Provider>
+		</NextIntlProvider>
+	);
+}
+
+function AppInner({ Component, pageProps }) {
+	const theme = useTheme();
 
 	return (
 		<>
@@ -41,20 +55,18 @@ function MyApp({ Component, pageProps }) {
 					href="/favicon-16x16.png"
 				/>
 
-				<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#007fff" />
+				<link
+					rel="mask-icon"
+					href="/safari-pinned-tab.svg"
+					color={theme.palette.primary.main}
+				/>
 
 				<meta name="msapplication-TileColor" content="#24292e" />
+
+				<meta name="theme-color" content={theme.palette.background.default} />
 			</Head>
-			<NextIntlProvider messages={pageProps.messages}>
-				<ColorModeContext.Provider value={colorMode}>
-					<ThemeProvider theme={mode === 'light' ? themeLight : themeDark}>
-						<CssBaseline />
-						<Component {...pageProps} />
-					</ThemeProvider>
-				</ColorModeContext.Provider>
-			</NextIntlProvider>
+
+			<Component {...pageProps} />
 		</>
 	);
 }
-
-export default MyApp;
