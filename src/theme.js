@@ -9,13 +9,24 @@ export const ColorModeContext = React.createContext({
 
 const baseTheme = {
 	typography: {
-		fontFamily: 'Quicksand',
+		fontFamily: 'Outfit',
+		fontSize: 16,
 		h1: {
-			fontWeight: 700,
+			fontSize: '5rem',
+		},
+		button: {
+			textTransform: 'none',
 		},
 	},
 	shape: {
-		borderRadius: 10,
+		borderRadius: 6,
+	},
+	components: {
+		MuiButton: {
+			styleOverrides: {
+				outlined: { borderWidth: '4px', '&:hover': { borderWidth: '4px' } },
+			},
+		},
 	},
 };
 

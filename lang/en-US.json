@@ -1,0 +1,26 @@
+{
+	"index": {
+		"hello": "Hello There!",
+		"im": "I'm",
+		"developer": "Software Developer",
+
+		"aboutHeading": "About Me",
+		"about": "I'm a systems analyst and software developer living in Brazil. I'm always looking for new projects to be a part of and work on. I'm a fast learner, able to context switch with ease and pick things up with little friction. I'm quietly confident, naturally curious, and perpetually learning and working on improving myself.",
+		"pictureAlt": "Picture of Bruno Bunhak",
+
+		"techHeading": "Tech I like",
+
+		"projectsHeading": "Projects",
+		"projects": {
+			"olaOnibus": "Proof of concept webApp for bus stops and routes.",
+			"portalHome": "Real Estate website with a focus on simplicity."
+		},
+		"projectsDemo": "Live Demo",
+		"projectsSource": "Source",
+		"projectsEnd": "Most of my projects have been private internal tools that I can't really show, but i'm working on some new things that I will be able to show, so stay tuned.",
+
+		"living": "Living, learning & improving one day at a time.",
+
+		"thanks": "Thanks for checking out my page. It was an honor to have you here :)"
+	}
+}

@@ -1,0 +1,26 @@
+{
+	"index": {
+		"hello": "Olá!",
+		"im": "Sou",
+		"developer": "Desenvolvedor de Software",
+
+		"aboutHeading": "Sobre Mim",
+		"about": "Sou analista de sistemas e desenvolvedor de software, morando no Brasil - Paraná. Estou sempre a procura de novos projetos e colaborações. Aprendo rápido, capaz de mudar de contexto com facilidade e entender coisas novas com pouco atrito. Sou tranquilamente confiante, naturalmente curioso e perpetuamente aprendendo e trabalhando para me melhorar.",
+		"pictureAlt": "Foto de Bruno Bunhak",
+
+		"techHeading": "Tech que eu gosto",
+
+		"projectsHeading": "Projetos",
+		"projects": {
+			"olaOnibus": "Conceitualização  de WebApp para rotas e paradas de ônibus.",
+			"portalHome": "Site imobiliário com foco na simplicidade."
+		},
+		"projectsDemo": "Demo",
+		"projectsSource": "Fonte",
+		"projectsEnd": "A maioria dos meus projetos são ferramentas internas privadas que não posso mostrar, mas estou trabalhando em algumas coisas novas que poderei mostrar, então fique atento.",
+
+		"living": "Vivendo, aprendendo & melhorando um dia de cada vez.",
+
+		"thanks": "Obrigado por visitar minha página. Foi uma honra ter você aqui :)"
+	}
+}

@@ -1,6 +1,6 @@
 {
-	"name": "",
-	"short_name": "",
+	"name": "Bruno Bunhak",
+	"short_name": "Bruno Bunhak",
 	"icons": [
 		{
 			"src": "/android-chrome-192x192.png",
@@ -13,6 +13,6 @@
 			"type": "image/png"
 		}
 	],
-	"background_color": "#007FFF",
+	"background_color": "#24292e",
 	"display": "standalone"
 }
