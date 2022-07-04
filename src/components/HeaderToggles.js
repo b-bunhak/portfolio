@@ -22,7 +22,7 @@ export default function HeaderToggles() {
 	const router = useRouter();
 
 	const theme = useTheme();
-	const colorMode = React.useContext(ColorModeContext);
+	const setColorMode = React.useContext(ColorModeContext);
 
 	const t = useTranslations();
 
@@ -46,8 +46,13 @@ export default function HeaderToggles() {
 			</ToggleButtonGroup>
 
 			<ToggleButtonGroup
+				exclusive
 				value={theme.palette.mode}
-				onChange={colorMode.toggleColorMode}
+				onChange={(_, mode) => {
+					if (mode) {
+						setColorMode(mode);
+					}
+				}}
 				color="primary"
 				size="medium"
 				sx={{

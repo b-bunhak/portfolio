@@ -7,17 +7,10 @@ import { themeLight, themeDark, ColorModeContext } from '../theme';
 
 export default function App({ Component, pageProps }) {
 	const [mode, setMode] = React.useState('dark');
-	const colorMode = React.useMemo(
-		() => ({
-			toggleColorMode: () => {
-				setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
-			},
-		}),
-		[]
-	);
+
 	return (
 		<NextIntlProvider messages={pageProps.messages}>
-			<ColorModeContext.Provider value={colorMode}>
+			<ColorModeContext.Provider value={setMode}>
 				<ThemeProvider theme={mode === 'light' ? themeLight : themeDark}>
 					<CssBaseline />
 					<AppInner Component={Component} pageProps={pageProps} />
